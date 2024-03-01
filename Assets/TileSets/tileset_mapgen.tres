@@ -1,0 +1,35 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://jbr1s6lt537t"]
+
+[ext_resource type="Texture2D" uid="uid://cuqd1ypnmrssn" path="res://Assets/Art/TilesForWorldGen.png" id="1_awo2b"]
+[ext_resource type="Texture2D" uid="uid://un45sopo5dt8" path="res://Assets/Art/HoverEffect.png" id="2_2cm3s"]
+[ext_resource type="Texture2D" uid="uid://c80fqqdjdmk13" path="res://Assets/Art/FarmPlants.png" id="3_p6ah4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwndi"]
+texture = ExtResource("1_awo2b")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apmxw"]
+texture = ExtResource("2_2cm3s")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbekx"]
+texture = ExtResource("3_p6ah4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_xwndi")
+sources/1 = SubResource("TileSetAtlasSource_apmxw")
+sources/2 = SubResource("TileSetAtlasSource_vbekx")

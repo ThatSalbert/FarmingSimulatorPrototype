@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://8g7i7s4so4g6"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/BuildModeComponent.cs" id="1_kaml0"]
+[ext_resource type="TileSet" uid="uid://jbr1s6lt537t" path="res://Assets/TileSets/tileset_mapgen.tres" id="2_5hrsl"]
+[ext_resource type="Script" path="res://Assets/Scripts/Map.cs" id="3_w35ls"]
+[ext_resource type="Script" path="res://Assets/Scripts/ZoomCamera.cs" id="4_2ydsc"]
+[ext_resource type="Script" path="res://Assets/Scripts/InGameTimer.cs" id="4_cule2"]
+
+[node name="World" type="Node2D"]
+
+[node name="Map" type="TileMap" parent="."]
+tile_set = ExtResource("2_5hrsl")
+format = 2
+layer_0/name = "Map Layer"
+layer_1/name = "Build Layer"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Plant Layer"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Highlight Layer"
+layer_3/tile_data = PackedInt32Array()
+script = ExtResource("3_w35ls")
+
+[node name="ZoomCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("4_2ydsc")
+
+[node name="Gameplay_Stuff" type="Node2D" parent="."]
+
+[node name="InGameTimer" type="Node2D" parent="Gameplay_Stuff"]
+script = ExtResource("4_cule2")
+
+[node name="BuildModeComponent" type="Node2D" parent="Gameplay_Stuff"]
+script = ExtResource("1_kaml0")
+
+[node name="UI_Stuff" type="Node2D" parent="."]
+
+[node name="UI_Layer" type="CanvasLayer" parent="UI_Stuff"]
+
+[node name="MoneyText" type="RichTextLabel" parent="UI_Stuff/UI_Layer"]
+offset_left = 14.0
+offset_top = 471.0
+offset_right = 228.0
+offset_bottom = 498.0
+
+[node name="ModeText" type="RichTextLabel" parent="UI_Stuff/UI_Layer"]
+offset_left = 14.0
+offset_top = 505.0
+offset_right = 228.0
+offset_bottom = 532.0
+
+[node name="TileText" type="RichTextLabel" parent="UI_Stuff/UI_Layer"]
+offset_left = 15.0
+offset_top = 540.0
+offset_right = 229.0
+offset_bottom = 567.0
+
+[node name="DayCounterText" type="RichTextLabel" parent="UI_Stuff/UI_Layer"]
+offset_left = 15.0
+offset_top = 574.0
+offset_right = 229.0
+offset_bottom = 601.0
+
+[node name="DayBar" type="ProgressBar" parent="UI_Stuff/UI_Layer"]
+offset_left = 11.0
+offset_top = 608.0
+offset_right = 229.0
+offset_bottom = 635.0
+max_value = 10.0
+show_percentage = false
+
+[connection signal="TimeUp" from="Gameplay_Stuff/InGameTimer" to="Map" method="HandleTimeUp"]
+[connection signal="TimeUp" from="Gameplay_Stuff/InGameTimer" to="Gameplay_Stuff/BuildModeComponent" method="HandleTimeUp"]
